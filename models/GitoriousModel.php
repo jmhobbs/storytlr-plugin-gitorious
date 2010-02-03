@@ -2,6 +2,7 @@
 /*
 *    Copyright 2008-2009 Laurent Eschenauer and Alard Weisscher
 *    Copyright 2010 John Hobbs
+*    Copyright 2010 Andrew Wafaa
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -39,7 +40,7 @@ class GitoriousModel extends SourceModel {
 	}
 
 	public function getServiceDescription() {
-		return "Github is social coding.";
+		return "Gitorious is social coding with an open view.";
 	}
 
 	public function getAccountName() {
@@ -98,7 +99,7 @@ class GitoriousModel extends SourceModel {
 			$data['published'] = strtotime( $item->published );
 			$data['content'] = $item->content;
 			$data['link'] = $item->link['href'];
-			$data['github_id'] = $item->id;
+			$data['gitorious_id'] = $item->id;
 			$id = $this->addItem( $data, $data['published'], SourceItem::LINK_TYPE, array( $data['repository'] ), false, false, $data['title'] );
 			if ($id) $result[] = $id;
 		}
