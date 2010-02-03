@@ -17,24 +17,15 @@
  *  limitations under the License.
  *
  */
-class GithubItem extends SourceItem {
+class GitoriousItem extends SourceItem {
 
 	protected $_prefix 	= 'gitorious';
 
 	protected $_preamble = 'Gitorious activity: ';
 
-	public function getContent() { return str_replace( '<div class="message">', '<div class="message note">', $this->_data['content'] ); }
+	public function getContent() { return $this->_data['content']; } // Needs love
 
 	public function getTitle () { return $this->_data['title']; }
-
-	public function getLinkedTitle() {
-		$title = str_replace(
-			$this->_data['repository'],
-			'<a href="http://gitorious.org/' . $this->_data['repository'] . '">' . $this->_data['repository'] . '</a>',
-			html_entity_decode( strip_tags( $this->_data['title'] ) )
-		);
-		return $title;
-	}
 
 	public function getLink() { return $this->_data['link']; }
 

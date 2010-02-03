@@ -63,7 +63,7 @@ class GitoriousModel extends SourceModel {
 	}
 
 	public function updateData() {
-		$url	= 'http://gitorious.org/' . $this->~getProperty('username')/feed . '.atom';
+		$url	= 'http://gitorious.org/~' . $this->getProperty('username') . '/feed.atom';
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
@@ -95,7 +95,7 @@ class GitoriousModel extends SourceModel {
 		foreach ($items as $item) {
 			$data = array();
 			$data['title'] = $item->title;
-			$data['repository'] = substr( $item->title, strrpos( $item->title, ' ' ) + 1 );
+			$data['repository'] = substr( $item->title, strrpos( $item->title, ' ' ) + 1 ); // Needs love
 			$data['published'] = strtotime( $item->published );
 			$data['content'] = $item->content;
 			$data['link'] = $item->link['href'];
